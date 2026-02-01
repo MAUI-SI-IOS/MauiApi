@@ -1,0 +1,96 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\willd\\source\\repos\\school\\maui\\ApiQuiz\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{777C45DF-1DDE-E024-C71B-FA8B60C373EA}|ApiQuiz\\ApiQuiz.csproj|c:\\users\\willd\\source\\repos\\school\\maui\\apiquiz\\apiquiz\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{777C45DF-1DDE-E024-C71B-FA8B60C373EA}|ApiQuiz\\ApiQuiz.csproj|solutionrelative:apiquiz\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{777C45DF-1DDE-E024-C71B-FA8B60C373EA}|ApiQuiz\\ApiQuiz.csproj|c:\\users\\willd\\source\\repos\\school\\maui\\apiquiz\\apiquiz\\data\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{777C45DF-1DDE-E024-C71B-FA8B60C373EA}|ApiQuiz\\ApiQuiz.csproj|solutionrelative:apiquiz\\data\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{777C45DF-1DDE-E024-C71B-FA8B60C373EA}|ApiQuiz\\ApiQuiz.csproj|c:\\users\\willd\\source\\repos\\school\\maui\\apiquiz\\apiquiz\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{777C45DF-1DDE-E024-C71B-FA8B60C373EA}|ApiQuiz\\ApiQuiz.csproj|solutionrelative:apiquiz\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{777C45DF-1DDE-E024-C71B-FA8B60C373EA}|ApiQuiz\\ApiQuiz.csproj|c:\\users\\willd\\source\\repos\\school\\maui\\apiquiz\\apiquiz\\apiservice\\api.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{777C45DF-1DDE-E024-C71B-FA8B60C373EA}|ApiQuiz\\ApiQuiz.csproj|solutionrelative:apiquiz\\apiservice\\api.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\willd\\source\\repos\\school\\maui\\ApiQuiz\\ApiQuiz\\MainPage.xaml",
+              "RelativeDocumentMoniker": "ApiQuiz\\MainPage.xaml",
+              "ToolTip": "C:\\Users\\willd\\source\\repos\\school\\maui\\ApiQuiz\\ApiQuiz\\MainPage.xaml",
+              "RelativeToolTip": "ApiQuiz\\MainPage.xaml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-30T16:55:05.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Question.cs",
+              "DocumentMoniker": "C:\\Users\\willd\\source\\repos\\school\\maui\\ApiQuiz\\ApiQuiz\\Data\\Question.cs",
+              "RelativeDocumentMoniker": "ApiQuiz\\Data\\Question.cs",
+              "ToolTip": "C:\\Users\\willd\\source\\repos\\school\\maui\\ApiQuiz\\ApiQuiz\\Data\\Question.cs",
+              "RelativeToolTip": "ApiQuiz\\Data\\Question.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T14:17:06.531Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Api.cs",
+              "DocumentMoniker": "C:\\Users\\willd\\source\\repos\\school\\maui\\ApiQuiz\\ApiQuiz\\ApiService\\Api.cs",
+              "RelativeDocumentMoniker": "ApiQuiz\\ApiService\\Api.cs",
+              "ToolTip": "C:\\Users\\willd\\source\\repos\\school\\maui\\ApiQuiz\\ApiQuiz\\ApiService\\Api.cs",
+              "RelativeToolTip": "ApiQuiz\\ApiService\\Api.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwCcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T13:24:05.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\willd\\source\\repos\\school\\maui\\ApiQuiz\\ApiQuiz\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "ApiQuiz\\MauiProgram.cs",
+              "ToolTip": "C:\\Users\\willd\\source\\repos\\school\\maui\\ApiQuiz\\ApiQuiz\\MauiProgram.cs",
+              "RelativeToolTip": "ApiQuiz\\MauiProgram.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwAAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T13:22:26.078Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
