@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ApiQuiz.ApiService
 {
-    enum Category
+    public enum Category
     {   
         GeneralKnowledge = 9,
         Geography = 22,

@@ -8,7 +8,7 @@ using System.Text.Json;
 
 namespace ApiQuiz.ApiService
 {
-    internal class Api
+    public class Api
     {
         HttpClient _client;
         JsonSerializerOptions _serializerOptions;

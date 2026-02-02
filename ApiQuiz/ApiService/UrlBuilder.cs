@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
+
+
 namespace ApiQuiz.ApiService
 {
-    internal class UrlBuilder
+    public class UrlBuilder
     {
         const string url = "https://opentdb.com/api.php?";
         Category category;
