@@ -1,4 +1,5 @@
 ﻿using ApiQuiz.Data;
+using ApiQuiz.Logic.Data;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,7 +27,7 @@ namespace ApiQuiz.ApiService
             this.builder = url;
         }
 
-        public async Task<IEnumerable<Question>> fetch()
+        public async Task<IEnumerable<RawQuestion>> fetch()
         {
             string url = builder.Build();
             try

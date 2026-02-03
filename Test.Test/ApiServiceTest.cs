@@ -1,5 +1,6 @@
 ﻿using ApiQuiz.ApiService;
 using ApiQuiz.Data;
+using ApiQuiz.Logic.Data;
 
 
 namespace Test.Test;
@@ -18,15 +19,24 @@ public class TestApi
           Api service = new Api(builder);
 
           var task = service.fetch();
-          List<Question> questions = task.Result
-                                         .ToList<Question>();
+          List<RawQuestion> questions = task.Result
+                                         .ToList<RawQuestion>();
           
           Assert.True(size == questions.Count);
 
-          foreach(Question q in questions)
+          //besoin de trouver un test pour assurer que le formatage est toujours bon 
+          //visuellement tous parait bien
+          foreach(RawQuestion q in questions)
           {
             Console.WriteLine(q.ToString());
-          }
-          
+          }   
+    }
+
+
+
+    [Fact]
+    public void TestRandomness()
+    {
+
     }
 }

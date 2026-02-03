@@ -1,38 +1,31 @@
-﻿using System;
+﻿using ApiQuiz.Logic.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
 namespace ApiQuiz.Data
 {
-
-
-    public record QuestionResponse
-    {
-       public Question[] results { get; set; }
-    }
-
-
     public class Question
     {
-        [JsonPropertyName("question")]
-        public string question { get; set; }
-        [JsonPropertyName("correct_answer")]
-        public string goodAnswer { get; set; }
-        [JsonPropertyName("incorrect_answers")]
-        public List<string> badAnswer { get; set; }
+        string question;
 
+        (string, bool)[] answers;
 
-        public override string ToString()
+        internal Question(RawQuestion raw)      // Can only be built from RawQuestion
         {
-            string output = $"{question},\nGood answer: {goodAnswer}\nBad answer:\n";
+            Random random = new Random();
+            this.answers = raw.badAnswer.AsEnumerable()
+                                        .Select(i => (i, false))
+                                        .Append((raw.goodAnswer, true))
+                                        .OrderBy(i => random.Next())
+                                        .ToArray();
 
-            foreach(var b in badAnswer)
-            {
-                output += b.ToString() + "\n";
-            }
-            output += "\n\n";
-            return output;
+            this.question = raw.question;
         }
-    }
+
+        public IEnumerable<(string,bool)> GetAnswers() => answers;
+        public (int, string)[] getAnswers() => answers.Select((i,index) => (index, i.Item1)).ToArray();
+        public bool IsGoodAnswer(int x) => answers[x].Item2;
+    } 
 }

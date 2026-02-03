@@ -14,6 +14,7 @@ namespace ApiQuiz.ApiService
 
         public UrlBuilder()
         {
+            //default param
             this.category = Category.GeneralKnowledge;
             this.amount = 10;
         }
