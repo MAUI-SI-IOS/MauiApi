@@ -11,6 +11,7 @@
             <Label Text="Choose a Subject" FontSize="Header"/>
             <Picker 
                 x:Name="PickerCategory" 
+                ItemsSource="{Binding Categories}"
                 SelectedItem="{Binding SelectedCategory}"
             />
         <Label Text="{Binding ErrCategoryMessage}" TextColor="Red" FontSize="Caption" />
@@ -21,8 +22,9 @@
                 Keyboard="Numeric"
             />
         <Label Text="{Binding ErrTextMessage}" TextColor="Red" FontSize="Caption" />
-        <Button Text="Start Quiz" Clicked="StartQuiz"
-                    Command="{Binding SanitizeCommand}"/>
+        
+        
+        <Button Text="Start Quiz" Clicked="StartQuiz"/>
     </StackLayout>
 
 </ContentPage>

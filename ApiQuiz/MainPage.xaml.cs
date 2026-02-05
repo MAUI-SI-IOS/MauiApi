@@ -8,23 +8,14 @@ namespace ApiQuiz
         public MainPage(MainViewModel vm)
         {
             InitializeComponent();
-            FillPicker();
-            BindingContext = vm;
-           
+            BindingContext = vm;        
         }
 
 
         public async void StartQuiz(object? sender, EventArgs args)
         {
-           
+            await Shell.Current.GoToAsync(nameof(QuizPage));
         }
 
-        void FillPicker()
-        {
-            foreach (var category in Enum.GetValues(typeof(Category)))
-            {
-                PickerCategory.Items.Add(category.ToString());
-            }
-        }
     }
 }

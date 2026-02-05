@@ -14,9 +14,17 @@ namespace ApiQuiz.ViewModel
     {
         private readonly UrlBuilder builder;
 
+        [ObservableProperty]
+        List<string> categories;
+
         public MainViewModel(UrlBuilder builder)
         {
             this.builder = builder;
+            categories = Enum.GetNames(typeof(Category)).ToList();
+
+            //set value by default
+            SelectedCategory = Category.GeneralKnowledge.ToString();
+            amount = 10;
         }
 
         [ObservableProperty]
