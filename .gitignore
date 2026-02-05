@@ -1,3 +1,4 @@
 .vs
-*/bin
-*/obj
+**/[Bb]in/*
+**/[Oo]bj/*
+/ApiQuiz.Logic/obj/Debug/net10.0/ApiQuiz.Logic.AssemblyInfo.cs
