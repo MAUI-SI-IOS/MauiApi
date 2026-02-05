@@ -21,26 +21,28 @@ public class TestApi
     [Fact]
     public void FetchData()
     {
-          const int size = 11;
+        const int size = 11;
+
+        UrlBuilder builder = new UrlBuilder();
+        builder.TrySetCategory("History");
+        builder.TrySetAmount(size);
 
         UrlBuilder builder = new UrlBuilder();
         builder.TrySetCategory("History");  
         builder.TrySetAmount(size);
 
-          Api service = new Api(builder);
+        var task = service.fetch();
+        List<RawQuestion> questions = task.Result
+                                       .ToList<RawQuestion>();
 
-          var task = service.fetch();
-          List<RawQuestion> questions = task.Result
-                                         .ToList<RawQuestion>();
-          
-          Assert.True(size == questions.Count);
+        Assert.True(size == questions.Count);
 
-          //besoin de trouver un test pour assurer que le formatage est toujours bon 
-          //visuellement tous parait bien
-          foreach(RawQuestion q in questions)
-          {
+        //besoin de trouver un test pour assurer que le formatage est toujours bon 
+        //visuellement tous parait bien
+        foreach (RawQuestion q in questions)
+        {
             Console.WriteLine(q.ToString());
-          }   
+        }
     }
 
 
