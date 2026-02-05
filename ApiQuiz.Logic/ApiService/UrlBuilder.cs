@@ -19,20 +19,26 @@ namespace ApiQuiz.ApiService
             this.amount = 10;
         }
 
-        public UrlBuilder SetCategory(Category category)
+        public string TrySetCategory(string category)
         {
-            this.category = category;
-            return this;
-        }
-        public UrlBuilder SetAmount(short amount)
-        {
-            if (amount > 20 || amount <= 0)
+            if (!Enum.TryParse(category, out Category cat))
             {
-                throw new ArgumentException("amount of question can't exceed 20");
+                return "Category Invalid";
+            }
+
+            this.category = cat;
+            return String.Empty;
+        }
+
+        public string TrySetAmount(short amount)
+        {
+            if (amount > 30 || amount <= 0)
+            {
+                return "Max questions is 30";
             }
 
             this.amount = amount;
-            return this;
+            return String.Empty;
         }
 
         public string Build()
