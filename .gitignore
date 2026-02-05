@@ -1,3 +1,3 @@
-.vs
-ApiQuiz/bin
-ApiQuiz/obj
+.vs/
+**/[Bb]in/
+**/[Oo]bj/
