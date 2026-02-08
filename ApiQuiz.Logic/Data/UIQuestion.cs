@@ -4,8 +4,6 @@ using System.Text;
 
 namespace ApiQuiz.Logic.Data
 {
-    internal interface IData<T>
-    {
-        T GetData();
-    }
+    public record UIQuestion(string question, (int, string)[] array);
+
 }

@@ -1,6 +1,6 @@
 ﻿using ApiQuiz.Logic.ApiService;
 using ApiQuiz.Data;
-using ApiQuiz.Logic.Data;
+using ApiQuiz.Logic.Data.ApiResponse;
 
 
 namespace Test.Test;

@@ -1,8 +1,12 @@
 
 
 
+using ApiQuiz.Logic.Data;
+
 namespace ApiQuiz.GameService;
 
-public interface IGame<T> {
-    T play();
+public interface IGame : IEnumerable<UIQuestion>
+{
+    public void CheckAnswer(int x);
+
 }
