@@ -1,5 +1,5 @@
 ﻿using ApiQuiz.Data;
-using ApiQuiz.Logic.Data;
+using ApiQuiz.Logic.Data.ApiResponse;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -40,9 +40,8 @@ namespace ApiQuiz.Logic.ApiService
 
                 return response.results;
             }
-            catch(JsonException e)
+            catch
             {
-                Debug.Write($"{e.Data}");
                 throw new Exception("[bad response] couldn't process response");
             }
         }

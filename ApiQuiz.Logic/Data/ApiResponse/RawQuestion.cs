@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace ApiQuiz.Logic.Data
+namespace ApiQuiz.Logic.Data.ApiResponse
 {
     public class RawQuestion
     {
