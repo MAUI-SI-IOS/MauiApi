@@ -1,11 +1,8 @@
-
-
-
-using ApiQuiz.Logic.Data;
+using ApiQuiz.Logic.Data.UI;
 
 namespace ApiQuiz.GameService;
 
-public interface IGame : IEnumerable<UIQuestion>
+public interface IGame : IEnumerable<Question>
 {
     public void CheckAnswer(int x);
 

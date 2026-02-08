@@ -1,34 +1,33 @@
-﻿using ApiQuiz.Data;
-using ApiQuiz.GameService;
+﻿using ApiQuiz.GameService;
 using ApiQuiz.Logic.ApiService;
 using ApiQuiz.Logic.Data;
+using ApiQuiz.Logic.Data.bus;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ApiQuiz.Logic.GameService
 {
-    internal class QuizGameCreator : IGameCreator
+    public class QuizGameCreator : IGameCreator
     {
         Api _api;
         Question[] questions;
 
         public QuizGameCreator(UrlBuilder builder){
+            //construire api
             _api = new Api(builder);
-            LoadAsyncQuestion();
         }
 
-        public IGame CreateGame()
-        {
-            return new Quiz(questions);
-        }
-
-        private async void LoadAsyncQuestion()
+        public async Task<IGame> CreateGame()
         {
             var result = await _api.fetch();
             this.questions = result?.Select(r => r.intoQuestion())
                                     .ToArray()
                                     ?? Array.Empty<Question>();
+
+            return new Quiz(questions);
         }
+
+ 
     }
 }

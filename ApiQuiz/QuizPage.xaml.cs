@@ -5,12 +5,19 @@ namespace ApiQuiz;
 
 public partial class QuizPage : ContentPage
 {
-
-    public string category { get; set; }
-    public string amount { get; set; }
     public QuizPage(QuizViewModel vm)
 	{
 		InitializeComponent();
         BindingContext = vm;
 	}
+
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (BindingContext is QuizViewModel vm)
+        {
+            await vm.LoadQuizAsync();
+        }
+    }
 }

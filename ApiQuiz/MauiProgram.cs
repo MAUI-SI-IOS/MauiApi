@@ -1,4 +1,5 @@
 ﻿using ApiQuiz.Logic.ApiService;
+using ApiQuiz.Logic.GameService;
 using ApiQuiz.ViewModel;
 using Microsoft.Extensions.Logging;
 
@@ -27,8 +28,11 @@ namespace ApiQuiz
             builder.Services.AddSingleton<MainViewModel>();
 
 
+            builder.Services.AddTransient<IGameCreator, QuizGameCreator>();
             builder.Services.AddTransient<QuizPage>();
             builder.Services.AddTransient<QuizViewModel>();
+
+
             return builder.Build();
         }
     }

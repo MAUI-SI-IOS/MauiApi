@@ -1,50 +1,58 @@
-
-﻿using ApiQuiz.Data;
 using ApiQuiz.GameService;
-using ApiQuiz.Logic.ApiService;
-using ApiQuiz.Logic.Data;
+using ApiQuiz.Logic.Data.UI;
 using ApiQuiz.Logic.GameService;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+using System.Diagnostics;
 
 namespace ApiQuiz.ViewModel
 {
-    //to test
-    public partial class QuizViewModel<T> : ObservableObject
+    public partial class QuizViewModel : ObservableObject
     {
-        IGame game;
-        private readonly IEnumerator<UIQuestion> _iterator;
+        //------------- logic of quiz -------------//
+        IGameCreator _creator;
+        IGame _game;
+        IEnumerator<Question> _iterator;
 
-        [ObservableProperty]
-        string str;
-        [ObservableProperty]
-        (int, string)[] answers;
 
+        //-------------   variables   -------------//
+        [ObservableProperty]
+        string currentQuestion;
+        [ObservableProperty]
+        Answer[] answers;
 
         public QuizViewModel(IGameCreator creator)
         {
-            game = creator.CreateGame();
-            _iterator = game.GetEnumerator();
-
-            GetQuestion();
+            _creator = creator;
+        }
+        public async Task LoadQuizAsync()
+        {   
+            _game = await _creator.CreateGame();
+            _iterator = _game.GetEnumerator();
+            GetNextQuestion();
         }
 
+
         [RelayCommand]
-        public void GetQuestion()
+        public void GetNextQuestion()
         {
             if(_iterator.MoveNext())
             {
-                Str     = _iterator.Current.question;
-                Answers = _iterator.Current.array;
+                var current = _iterator.Current;
+
+                CurrentQuestion = current.Str;
+                Answers         = current.Array;
             }
             else
             {
                 //end game
             }
+        }
+
+        [RelayCommand]
+        public void Answer(int x)
+        {
+            _game.CheckAnswer(x);
         }
     }
 }
