@@ -1,4 +1,4 @@
-﻿using ApiQuiz.Data;
+﻿using ApiQuiz.Logic.Data.UI;
 using ApiQuiz.GameService;
 using ApiQuiz.Logic.ApiService;
 using ApiQuiz.Logic.Data;
@@ -14,36 +14,7 @@ namespace ApiQuiz.ViewModel
 {
     public partial class QuizViewModel : ObservableObject
     {
-        IGame game;
-        private readonly IEnumerator<UIQuestion> _iterator;
-
-        [ObservableProperty]
-        string str;
-        [ObservableProperty]
-        (int, string)[] answers;
-
-
-        public QuizViewModel(IGameCreator creator)
-        {
-            game = creator.CreateGame();
-            _iterator = game.GetEnumerator();
-
-            GetQuestion();
-        }
-
-        [RelayCommand]
-        public void GetQuestion()
-        {
-            if(_iterator.MoveNext())
-            {
-                Str     = _iterator.Current.question;
-                Answers = _iterator.Current.array;
-            }
-            else
-            {
-                //end game
-            }
-        }
+        
 
     }
 }

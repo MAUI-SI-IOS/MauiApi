@@ -1,20 +1,17 @@
-﻿using ApiQuiz.Data;
-using ApiQuiz.Logic.ApiService;
+﻿using ApiQuiz.Logic.ApiService;
 using ApiQuiz.Logic.TimingService;
 using System.Collections;
 using ApiQuiz.GameService;
-using ApiQuiz.Logic.Data;
-
 namespace ApiQuiz.Logic.GameService
 {
     public class Quiz : IGame
     {
-        Question[] questions;
-        Question?   currentQuestion;
+        Data.bus.Question[] questions;
+        Data.bus.Question?   currentQuestion;
         int score;
 
 
-        public Quiz(Question[] questions)
+        public Quiz(Data.bus.Question[] questions)
         {
             this.questions = questions;
 
@@ -28,7 +25,7 @@ namespace ApiQuiz.Logic.GameService
             }
         }
 
-        public IEnumerator<UIQuestion> GetEnumerator()
+        public IEnumerator<Data.UI.Question> GetEnumerator()
         {
             foreach(var q in this.questions)
             {
