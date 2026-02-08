@@ -7,7 +7,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 
-namespace ApiQuiz.ApiService
+namespace ApiQuiz.Logic.ApiService
 {
     public class Api
     {

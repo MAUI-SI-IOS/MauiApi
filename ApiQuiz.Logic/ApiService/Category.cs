@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiQuiz.ApiService
+namespace ApiQuiz.Logic.ApiService
 {
     public enum Category
     {   

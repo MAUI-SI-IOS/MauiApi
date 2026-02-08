@@ -4,7 +4,7 @@ using System.Text;
 
 
 
-namespace ApiQuiz.ApiService
+namespace ApiQuiz.Logic.ApiService
 {
     public class UrlBuilder
     {

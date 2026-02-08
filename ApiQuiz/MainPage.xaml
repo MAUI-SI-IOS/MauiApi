@@ -1,6 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ApiQuiz.MainPage">
+             x:Class="ApiQuiz.MainPage"
+             xmlns:viewmodel="clr-namespace:ApiQuiz.ViewModel"
+             x:DataType="viewmodel:MainViewModel">
+    
+    <StackLayout>
+            <Label Text="Quiz Api" FontSize="Title"/>
+            
+            <Label Text="Choose a Subject" FontSize="Header"/>
+            <Picker 
+                x:Name="PickerCategory" 
+                ItemsSource="{Binding Categories}"
+                SelectedItem="{Binding SelectedCategory}"
+            />
+        <Label Text="{Binding ErrCategoryMessage}" TextColor="Red" FontSize="Caption" />
+            <Label Text="Amount of question" FontSize="Header"/>
+            <Entry 
+                Placeholder="enter amount of questions" 
+                Text="{Binding Amount}"
+                Keyboard="Numeric"
+            />
+        <Label Text="{Binding ErrTextMessage}" TextColor="Red" FontSize="Caption" />
+        
+        
+        <Button Text="Start Quiz" Clicked="StartQuiz"/>
+    </StackLayout>
 
 </ContentPage>

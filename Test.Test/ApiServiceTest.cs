@@ -1,4 +1,4 @@
-﻿using ApiQuiz.ApiService;
+﻿using ApiQuiz.Logic.ApiService;
 using ApiQuiz.Data;
 using ApiQuiz.Logic.Data;
 
@@ -13,7 +13,7 @@ public class TestApi
         const int size = 11;
 
         UrlBuilder builder = new UrlBuilder();
-        Assert.True(builder.TrySetCategory("History") == String.Empty);
+        Assert.True(builder.TrySetCategory("History") == String.Empty );
         Assert.True(builder.TrySetAmount(size) == String.Empty);
 
     }
@@ -27,7 +27,9 @@ public class TestApi
         builder.TrySetCategory("History");
         builder.TrySetAmount(size);
 
-        Api service = new Api(builder);
+        UrlBuilder builder = new UrlBuilder();
+        builder.TrySetCategory("History");  
+        builder.TrySetAmount(size);
 
         var task = service.fetch();
         List<RawQuestion> questions = task.Result
