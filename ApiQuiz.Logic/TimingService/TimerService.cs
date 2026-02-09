@@ -1,15 +1,11 @@
-﻿using ApiQuiz.Data;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+﻿using System.Diagnostics;
 
 namespace ApiQuiz.Logic.TimingService
 {
     internal class TimerService: ISubject
     {
-        Stopwatch  timer;
-        TimeSpan[] times;
+        Stopwatch  timer = new();
+        private TimeSpan[] times = [];
         int _ptr;
 
         public void Start()

@@ -28,14 +28,14 @@ namespace ApiQuiz.ViewModel
         }
 
         [ObservableProperty]
-        string selectedCategory;
+        string selectedCategory = string.Empty;
         [ObservableProperty]
         short amount;
 
         [ObservableProperty]
-        string errCategoryMessage;
+        string errCategoryMessage = string.Empty;
         [ObservableProperty]
-        string errTextMessage;
+        string errTextMessage = string.Empty;
 
         partial void OnSelectedCategoryChanged(string value) => SanitizeCategory();
         partial void OnAmountChanged(short value) => SanitizeAmount();

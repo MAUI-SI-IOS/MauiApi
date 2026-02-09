@@ -6,8 +6,8 @@ namespace ApiQuiz;
 public partial class QuizPage : ContentPage
 {
 
-    public string category { get; set; }
-    public string amount { get; set; }
+    public string category { get; set; } = string.Empty;
+    public string amount { get; set; } = string.Empty;
     public QuizPage(QuizViewModel vm)
 	{
 		InitializeComponent();

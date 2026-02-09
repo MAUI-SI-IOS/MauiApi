@@ -1,5 +1,4 @@
-﻿using ApiQuiz.Data;
-using ApiQuiz.Logic.Data.ApiResponse;
+﻿using ApiQuiz.Logic.Data.ApiResponse;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
