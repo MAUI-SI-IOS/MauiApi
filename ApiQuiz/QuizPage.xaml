@@ -10,9 +10,10 @@
         <VerticalStackLayout BindableLayout.ItemsSource= "{Binding Answers}">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
+                    <!-- TODO: Les button n'ont pas d'event pour quand le bouton est appuyer  -->
                     <Button Text = "{Binding Str}"
-                    Margin = "0,5" 
-                    TextColor="white"/>
+                            Margin = "0,5" 
+                            TextColor="white"/>
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
         </VerticalStackLayout>
