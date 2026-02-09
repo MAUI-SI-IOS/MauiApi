@@ -7,8 +7,8 @@ namespace ApiQuiz.Logic.TimingService
 {
     internal class TimerService: ISubject
     {
-        Stopwatch  timer;
-        TimeSpan[] times;
+        Stopwatch  timer = new();
+        TimeSpan[] times = [];
         int _ptr;
 
         public void Start()
