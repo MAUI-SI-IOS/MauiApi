@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ApiQuiz.QuizPage">
+             x:Class="ApiQuiz.QuizPage"
+             x:Name="QuizPageRoot">
+
     <VerticalStackLayout>
         <Label Text="{Binding CurrentQuestion}"/>
         
@@ -13,7 +15,9 @@
                     <!-- TODO: Les button n'ont pas d'event pour quand le bouton est appuyer  -->
                     <Button Text = "{Binding Str}"
                             Margin = "0,5" 
-                            TextColor="white"/>
+                            TextColor="white"
+                            Command="{Binding BindingContext.AnswerCommand, Source={x:Reference QuizPageRoot}}"
+                            CommandParameter="{Binding Index}"/>
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
         </VerticalStackLayout>
