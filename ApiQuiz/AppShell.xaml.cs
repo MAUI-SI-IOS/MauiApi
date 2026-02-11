@@ -7,6 +7,7 @@
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(QuizPage), typeof(QuizPage));
+            Routing.RegisterRoute(nameof(ResultPage), typeof(ResultPage));
         }
     }
 }
