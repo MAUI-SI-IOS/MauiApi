@@ -26,11 +26,11 @@ namespace ApiQuiz.Logic.Data.bus
             this.question = raw.question;
         }
 
-        public IEnumerable<Bus.Answer> GetGoodAnswers() => answers.Where(a => a.isTrue == true);
+        public IEnumerable<Bus.Answer> GetGoodAnswers() => answers.Where(a => a.IsTrue == true);
         public UI.Question GetUIQuestion() {
-            return new UI.Question(question, answers.Select((answer, i) => new UI.Answer(i, answer.str)).ToArray());
+            return new UI.Question(question, answers.Select((answer, i) => new UI.Answer(i, answer.Str)).ToArray());
          }
-        public bool IsGoodAnswer(int x) => answers[x].isTrue;
+        public bool IsGoodAnswer(int x) => answers[x].IsTrue;
 
         public Question GetData()
         {

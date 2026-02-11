@@ -1,5 +1,4 @@
 ﻿using ApiQuiz.Logic.ApiService;
-using ApiQuiz.Data;
 using ApiQuiz.Logic.Data.ApiResponse;
 
 
