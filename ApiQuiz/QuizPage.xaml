@@ -5,7 +5,7 @@
              x:Name="QuizPageRoot">
 
     <StackLayout Background="AliceBlue" Padding="10">
-        <!-- Question -->
+        
         <Border
             Stroke="black"
             StrokeThickness="0.5"
@@ -13,6 +13,25 @@
             BackgroundColor="white"
             Padding="10">
             <StackLayout>
+                <!-- Resultat -->
+                <HorizontalStackLayout HorizontalOptions ="End">
+                    
+                    <Label 
+                        Text="{Binding Score}"
+                        FontSize="Default"
+                        FontAttributes="Bold"/>
+                    <Label 
+                        Text="/"
+                        FontSize="Default"
+                        FontAttributes="Bold"/>
+                    <Label 
+                        Text="{Binding QuestionSize}"
+                        FontSize="Default"
+                        FontAttributes="Bold"/>
+                    
+                </HorizontalStackLayout>
+                
+                <!-- Question -->
                 <Label 
                     Text="Question :"
                     FontSize="Subtitle"
@@ -21,6 +40,14 @@
                     Text="{Binding CurrentQuestion}"
                     FontSize="Body"
                     FontAttributes="Bold"/>
+                
+                <!-- progress bar -->
+                
+                <ProgressBar Progress="{Binding Ratio}" 
+                 ProgressColor="DeepPink"
+                 WidthRequest="200"
+                 ScaleY="2" />
+                
             </StackLayout>
         </Border>
         
