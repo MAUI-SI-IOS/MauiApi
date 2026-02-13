@@ -15,7 +15,7 @@
             <StackLayout>
                 <!-- Resultat -->
                 <HorizontalStackLayout HorizontalOptions ="End">
-                    
+
                     <Label 
                         Text="{Binding Score}"
                         FontSize="Default"
@@ -31,7 +31,6 @@
                         FontSize="Default"
                         FontAttributes="Bold"
                         TextColor="Black"/>
-                    
                 </HorizontalStackLayout>
                 
                 <!-- Question -->
@@ -50,7 +49,6 @@
                 
                 <ProgressBar Progress="{Binding Ratio}" 
                  ProgressColor="DeepPink"
-                 WidthRequest="200"
                  ScaleY="2" />
                 
             </StackLayout>

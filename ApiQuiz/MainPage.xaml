@@ -30,12 +30,18 @@
                     FontSize="Subtitle" 
                     FontAttributes="Bold"
                     TextColor="Black"/>
-                <Picker 
+                    <Border 
+                        Stroke="black"
+                        StrokeThickness="0.5"
+                        StrokeShape="RoundRectangle 10"
+                        BackgroundColor="white">
+                        <Picker 
                     x:Name="PickerCategory" 
                     ItemsSource="{Binding Categories}"
                     SelectedItem="{Binding SelectedCategory}"
                     TextColor="Black"/>
-                <!-- Error message-->
+                    </Border>
+                    <!-- Error message-->
                 <Label 
                     Text="{Binding ErrCategoryMessage}" 
                     TextColor="Red" 
@@ -45,13 +51,18 @@
                     FontSize="Subtitle" 
                     FontAttributes="Bold"
                     TextColor="Black"/>
-                
-                <Entry 
-                    Placeholder="enter amount of questions" 
-                    Text="{Binding Amount}"
-                    Keyboard="Numeric"
-                    TextColor="Black"/>
-                <!-- Error message-->
+                    <Border 
+                        Stroke="black"
+                        StrokeThickness="0.5"
+                        StrokeShape="RoundRectangle 10"
+                        BackgroundColor="white">
+                        <Entry 
+                            Placeholder="enter amount of questions" 
+                            Text="{Binding Amount}"
+                            Keyboard="Numeric"
+                            TextColor="Black"/>
+                    </Border>
+                    <!-- Error message-->
                 <Label Text="{Binding ErrTextMessage}" TextColor="Red" FontSize="Caption" />
             </StackLayout>
         </Border>
