@@ -49,7 +49,7 @@ namespace ApiQuiz.ViewModel
         [RelayCommand]
         void SanitizeCategory()
         {
-            ErrTextMessage = this.builder.TrySetCategory(selectedCategory);
+            ErrCategoryMessage = this.builder.TrySetCategory(selectedCategory);
         }    
     }
 }
