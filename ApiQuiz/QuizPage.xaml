@@ -19,15 +19,18 @@
                     <Label 
                         Text="{Binding Score}"
                         FontSize="Default"
-                        FontAttributes="Bold"/>
+                        FontAttributes="Bold"
+                        TextColor="Black"/>
                     <Label 
                         Text="/"
                         FontSize="Default"
-                        FontAttributes="Bold"/>
+                        FontAttributes="Bold"
+                        TextColor="Black"/>
                     <Label 
                         Text="{Binding QuestionSize}"
                         FontSize="Default"
-                        FontAttributes="Bold"/>
+                        FontAttributes="Bold"
+                        TextColor="Black"/>
                     
                 </HorizontalStackLayout>
                 
@@ -35,11 +38,13 @@
                 <Label 
                     Text="Question :"
                     FontSize="Subtitle"
-                    FontAttributes="Bold"/>
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
                 <Label 
                     Text="{Binding CurrentQuestion}"
                     FontSize="Body"
-                    FontAttributes="Bold"/>
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
                 
                 <!-- progress bar -->
                 

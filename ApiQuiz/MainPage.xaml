@@ -23,25 +23,34 @@
             StrokeShape="RoundRectangle 10"
             BackgroundColor="white"
             Padding="10">
-            <StackLayout>
+                <StackLayout>
 
-                <Label Text="Choose a Subject" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label 
+                    Text="Choose a Subject" 
+                    FontSize="Subtitle" 
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
                 <Picker 
                     x:Name="PickerCategory" 
                     ItemsSource="{Binding Categories}"
-                    SelectedItem="{Binding SelectedCategory}"/>
+                    SelectedItem="{Binding SelectedCategory}"
+                    TextColor="Black"/>
                 <!-- Error message-->
                 <Label 
                     Text="{Binding ErrCategoryMessage}" 
                     TextColor="Red" 
-                    FontSize="Caption" />
-
-
-                <Label Text="Amount of question" FontSize="Subtitle" FontAttributes="Bold"/>
+                    FontSize="Caption"/>
+                <Label 
+                    Text="Amount of question" 
+                    FontSize="Subtitle" 
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
+                
                 <Entry 
                     Placeholder="enter amount of questions" 
                     Text="{Binding Amount}"
-                    Keyboard="Numeric"/>
+                    Keyboard="Numeric"
+                    TextColor="Black"/>
                 <!-- Error message-->
                 <Label Text="{Binding ErrTextMessage}" TextColor="Red" FontSize="Caption" />
             </StackLayout>
@@ -52,7 +61,8 @@
                 FontSize="Subtitle" 
                 FontAttributes="Bold"
                 BackgroundColor="Blue" 
-                Clicked="StartQuiz"/>
+                Clicked="StartQuiz"
+                TextColor="White"/>
             
         </StackLayout >
     </StackLayout>
