@@ -1,4 +1,4 @@
-﻿using ApiQuiz.Data;
+﻿using ApiQuiz.Logic.Data.bus;
 using System;
 using System.Collections.Generic;
 using System.Text;
