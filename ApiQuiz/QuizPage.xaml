@@ -4,25 +4,45 @@
              x:Class="ApiQuiz.QuizPage"
              x:Name="QuizPageRoot">
 
-    <VerticalStackLayout>
-        <Label Text="{Binding CurrentQuestion}"/>
+    <StackLayout Background="AliceBlue" Padding="10">
+        <!-- Question -->
+        <Border
+            Stroke="black"
+            StrokeThickness="0.5"
+            StrokeShape="RoundRectangle 10"
+            BackgroundColor="white"
+            Padding="10">
+            <StackLayout>
+                <Label 
+                    Text="Question :"
+                    FontSize="Subtitle"
+                    FontAttributes="Bold"/>
+                <Label 
+                    Text="{Binding CurrentQuestion}"
+                    FontSize="Body"
+                    FontAttributes="Bold"/>
+            </StackLayout>
+        </Border>
         
+        <!-- List de reponse -->
         <!-- List de button pour le choix de question -->
         <!-- https://www.youtube.com/watch?v=Gxo-85Cbii8 -->
-        <VerticalStackLayout BindableLayout.ItemsSource= "{Binding Answers}">
+        <StackLayout BindableLayout.ItemsSource= "{Binding Answers}">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <!-- TODO: Les button n'ont pas d'event pour quand le bouton est appuyer  -->
                     <Button Text = "{Binding Str}"
                             Margin = "0,5" 
                             TextColor="white"
+                            BackgroundColor="Blue"
+                            
                             Command="{Binding BindingContext.AnswerCommand, Source={x:Reference QuizPageRoot}}"
                             CommandParameter="{Binding Index}"/>
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
-        </VerticalStackLayout>
+        </StackLayout>
 
-    </VerticalStackLayout>
+    </StackLayout>
 </ContentPage>
     
     
