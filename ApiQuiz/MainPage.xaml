@@ -23,26 +23,46 @@
             StrokeShape="RoundRectangle 10"
             BackgroundColor="white"
             Padding="10">
-            <StackLayout>
+                <StackLayout>
 
-                <Label Text="Choose a Subject" FontSize="Subtitle" FontAttributes="Bold"/>
-                <Picker 
+                <Label 
+                    Text="Choose a Subject" 
+                    FontSize="Subtitle" 
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
+                    <Border 
+                        Stroke="black"
+                        StrokeThickness="0.5"
+                        StrokeShape="RoundRectangle 10"
+                        BackgroundColor="white">
+                        <Picker 
                     x:Name="PickerCategory" 
                     ItemsSource="{Binding Categories}"
-                    SelectedItem="{Binding SelectedCategory}"/>
-                <!-- Error message-->
+                    SelectedItem="{Binding SelectedCategory}"
+                    TextColor="Black"/>
+                    </Border>
+                    <!-- Error message-->
                 <Label 
                     Text="{Binding ErrCategoryMessage}" 
                     TextColor="Red" 
-                    FontSize="Caption" />
-
-
-                <Label Text="Amount of question" FontSize="Subtitle" FontAttributes="Bold"/>
-                <Entry 
-                    Placeholder="enter amount of questions" 
-                    Text="{Binding Amount}"
-                    Keyboard="Numeric"/>
-                <!-- Error message-->
+                    FontSize="Caption"/>
+                <Label 
+                    Text="Amount of question" 
+                    FontSize="Subtitle" 
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
+                    <Border 
+                        Stroke="black"
+                        StrokeThickness="0.5"
+                        StrokeShape="RoundRectangle 10"
+                        BackgroundColor="white">
+                        <Entry 
+                            Placeholder="enter amount of questions" 
+                            Text="{Binding Amount}"
+                            Keyboard="Numeric"
+                            TextColor="Black"/>
+                    </Border>
+                    <!-- Error message-->
                 <Label Text="{Binding ErrTextMessage}" TextColor="Red" FontSize="Caption" />
             </StackLayout>
         </Border>
@@ -52,7 +72,8 @@
                 FontSize="Subtitle" 
                 FontAttributes="Bold"
                 BackgroundColor="Blue" 
-                Clicked="StartQuiz"/>
+                Clicked="StartQuiz"
+                TextColor="White"/>
             
         </StackLayout >
     </StackLayout>
