@@ -10,7 +10,7 @@ namespace ApiQuiz.Logic.GameService
     public class Quiz : IGame
     {
         Data.bus.Question[] questions;
-        Data.bus.Question?   currentQuestion;
+        Data.bus.Question?  currentQuestion;
         int score;
 
         public Quiz(Data.bus.Question[] questions)
@@ -20,16 +20,17 @@ namespace ApiQuiz.Logic.GameService
             score  = 0;
         }
 
-        /// <summary>
-        /// increment score, Timespan(not implemented yet)
-        /// </summary>
-        /// <param name="x"></param>
         public void CheckAnswer(int x){
             if(currentQuestion?.IsGoodAnswer(x) == true) {
                 //stop timer 
                 score += 1;
             }
         }
+        public bool IsGoodAnswer(int x)
+        {
+            return currentQuestion?.IsGoodAnswer(x) ?? true;
+        }
+
         public int GetScore()
         {
             return score;

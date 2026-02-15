@@ -4,7 +4,7 @@
              x:Class="ApiQuiz.QuizPage"
              x:Name="QuizPageRoot">
 
-    <StackLayout Background="AliceBlue" Padding="10">
+    <StackLayout Background="{Binding BColor}" Padding="10">
         
         <Border
             Stroke="black"

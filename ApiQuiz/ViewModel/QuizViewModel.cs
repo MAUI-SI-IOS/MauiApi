@@ -24,7 +24,9 @@ namespace ApiQuiz.ViewModel
         [ObservableProperty]
         string gameSize;        // length of quiz
         [ObservableProperty]
-        double ratio;              // progressBar               
+        double ratio;           // progressBar               
+        [ObservableProperty]
+        Color bColor;
 
         public async Task LoadQuizAsync()
         {   
@@ -35,28 +37,33 @@ namespace ApiQuiz.ViewModel
             GameSize  = _game.GetLenght().ToString();
             GetNextQuestion();
         }
-
-
         public void GetNextQuestion()
         {
-            if(_iterator.MoveNext())
+            BColor = Colors.AliceBlue;
+            if (_iterator.MoveNext())
             {
                 var current = _iterator.Current;
                 CurrentQuestion = current.Str;
-                Answers         = current.Array;
+                Answers = current.Array;
             }
             else _ = GoToResultAsync();
         }
-
         [RelayCommand]
-        public void Answer(int position)
+        public async Task Answer(int position)
         {
             _game.CheckAnswer(position);
+            
+            // update page variable
             Score = _game.GetScore().ToString();
-
             Ratio =  (double)++numberQuestion/ _game.GetLenght();
+
+            // update ui
+            BColor = _game.IsGoodAnswer(position) ? Colors.Green : Colors.Red;
+            await Task.Delay(1000);
+
             GetNextQuestion();
         }
+
 
         private static async Task GoToResultAsync()
         {
