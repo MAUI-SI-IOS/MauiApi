@@ -27,7 +27,7 @@
                         FontAttributes="Bold"
                         TextColor="Black"/>
                     <Label 
-                        Text="{Binding QuestionSize}"
+                        Text="{Binding GameSize}"
                         FontSize="Default"
                         FontAttributes="Bold"
                         TextColor="Black"/>

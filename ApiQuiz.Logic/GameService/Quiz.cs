@@ -34,6 +34,10 @@ namespace ApiQuiz.Logic.GameService
         {
             return score;
         }
+        public int GetLenght()
+        {
+            return questions.Length;
+        }
 
         public IEnumerator<Data.UI.Question> GetEnumerator()
         {

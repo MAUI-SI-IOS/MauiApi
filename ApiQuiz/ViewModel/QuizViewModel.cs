@@ -21,7 +21,8 @@ namespace ApiQuiz.ViewModel
         Answer[] answers;
         [ObservableProperty]
         string score;
-
+        [ObservableProperty]
+        string gameSize;
         public async Task LoadQuizAsync()
         {   
             _game = await creator.CreateGame();
@@ -47,6 +48,7 @@ namespace ApiQuiz.ViewModel
         {
             _game.CheckAnswer(position);
             Score = _game.GetScore().ToString();
+            GameSize = _game.GetLenght().ToString();
             GetNextQuestion();
         }
 
