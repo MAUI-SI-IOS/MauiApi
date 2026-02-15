@@ -4,27 +4,77 @@
              x:Class="ApiQuiz.MainPage"
              xmlns:viewmodel="clr-namespace:ApiQuiz.ViewModel"
              x:DataType="viewmodel:MainViewModel">
-    
-    <StackLayout>
-            <Label Text="Quiz Api" FontSize="Title"/>
-            
-            <Label Text="Choose a Subject" FontSize="Header"/>
-            <Picker 
-                x:Name="PickerCategory" 
-                ItemsSource="{Binding Categories}"
-                SelectedItem="{Binding SelectedCategory}"
-            />
-        <Label Text="{Binding ErrCategoryMessage}" TextColor="Red" FontSize="Caption" />
-            <Label Text="Amount of question" FontSize="Header"/>
-            <Entry 
-                Placeholder="enter amount of questions" 
-                Text="{Binding Amount}"
-                Keyboard="Numeric"
-            />
-        <Label Text="{Binding ErrTextMessage}" TextColor="Red" FontSize="Caption" />
-        
-        
-        <Button Text="Start Quiz" Clicked="StartQuiz"/>
-    </StackLayout>
 
+    <StackLayout Background="AliceBlue">
+        <!-- title of intro page-->
+        <Label 
+            Text="Test your knowledge" 
+            FontSize="Title"  
+            FontAttributes="Bold"
+            BackgroundColor="LightGray" 
+            Padding="15"    
+        />
+        <StackLayout  Padding="15" Spacing="30" >
+    
+        <!-- formulaire -->
+        <Border 
+            Stroke="black"
+            StrokeThickness="0.5"
+            StrokeShape="RoundRectangle 10"
+            BackgroundColor="white"
+            Padding="10">
+                <StackLayout>
+
+                <Label 
+                    Text="Choose a Subject" 
+                    FontSize="Subtitle" 
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
+                    <Border 
+                        Stroke="black"
+                        StrokeThickness="0.5"
+                        StrokeShape="RoundRectangle 10"
+                        BackgroundColor="white">
+                        <Picker 
+                    x:Name="PickerCategory" 
+                    ItemsSource="{Binding Categories}"
+                    SelectedItem="{Binding SelectedCategory}"
+                    TextColor="Black"/>
+                    </Border>
+                    <!-- Error message-->
+                <Label 
+                    Text="{Binding ErrCategoryMessage}" 
+                    TextColor="Red" 
+                    FontSize="Caption"/>
+                <Label 
+                    Text="Amount of question" 
+                    FontSize="Subtitle" 
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
+                    <Border 
+                        Stroke="black"
+                        StrokeThickness="0.5"
+                        StrokeShape="RoundRectangle 10"
+                        BackgroundColor="white">
+                        <Entry 
+                            Placeholder="enter amount of questions" 
+                            Text="{Binding Amount}"
+                            Keyboard="Numeric"
+                            TextColor="Black"/>
+                    </Border>
+                    <!-- Error message-->
+                <Label Text="{Binding ErrTextMessage}" TextColor="Red" FontSize="Caption" />
+            </StackLayout>
+        </Border>
+            
+            <Button 
+                Text="Start Quiz" 
+                FontSize="Subtitle" 
+                FontAttributes="Bold"
+                BackgroundColor="Blue" 
+                Clicked="StartQuiz"
+                TextColor="White"/>
+            
+        </StackLayout >
+    </StackLayout>
 </ContentPage>

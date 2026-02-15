@@ -12,9 +12,9 @@ namespace ApiQuiz
         }
 
 
-        public async  void StartQuiz(object? sender, EventArgs args)
+        public void StartQuiz(object? sender, EventArgs args)
         {
-            await Shell.Current.GoToAsync(nameof(QuizPage));
+            _ = Shell.Current.GoToAsync(nameof(QuizPage));
         }
 
     }

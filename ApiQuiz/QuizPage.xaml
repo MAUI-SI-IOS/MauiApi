@@ -1,23 +1,78 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ApiQuiz.QuizPage">
-    <VerticalStackLayout>
-        <Label Text="{Binding CurrentQuestion}"/>
+             x:Class="ApiQuiz.QuizPage"
+             x:Name="QuizPageRoot">
+
+    <StackLayout Background="AliceBlue" Padding="10">
         
+        <Border
+            Stroke="black"
+            StrokeThickness="0.5"
+            StrokeShape="RoundRectangle 10"
+            BackgroundColor="white"
+            Padding="10">
+            <StackLayout>
+                <!-- Resultat -->
+                <HorizontalStackLayout HorizontalOptions ="End">
+
+                    <Label 
+                        Text="{Binding Score}"
+                        FontSize="Default"
+                        FontAttributes="Bold"
+                        TextColor="Black"/>
+                    <Label 
+                        Text="/"
+                        FontSize="Default"
+                        FontAttributes="Bold"
+                        TextColor="Black"/>
+                    <Label 
+                        Text="{Binding QuestionSize}"
+                        FontSize="Default"
+                        FontAttributes="Bold"
+                        TextColor="Black"/>
+                </HorizontalStackLayout>
+                
+                <!-- Question -->
+                <Label 
+                    Text="Question :"
+                    FontSize="Subtitle"
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
+                <Label 
+                    Text="{Binding CurrentQuestion}"
+                    FontSize="Body"
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
+                
+                <!-- progress bar -->
+                
+                <ProgressBar Progress="{Binding Ratio}" 
+                 ProgressColor="DeepPink"
+                 ScaleY="2" />
+                
+            </StackLayout>
+        </Border>
+        
+        <!-- List de reponse -->
         <!-- List de button pour le choix de question -->
         <!-- https://www.youtube.com/watch?v=Gxo-85Cbii8 -->
-        <VerticalStackLayout BindableLayout.ItemsSource= "{Binding Answers}">
+        <StackLayout BindableLayout.ItemsSource= "{Binding Answers}">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
+                    <!-- TODO: Les button n'ont pas d'event pour quand le bouton est appuyer  -->
                     <Button Text = "{Binding Value}"
                             Margin = "0,5" 
-                            TextColor="white"/>
+                            TextColor="white"
+                            BackgroundColor="Blue"
+                            
+                            Command="{Binding BindingContext.AnswerCommand, Source={x:Reference QuizPageRoot}}"
+                            CommandParameter="{Binding Index}"/>
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
-        </VerticalStackLayout>
+        </StackLayout>
 
-    </VerticalStackLayout>
+    </StackLayout>
 </ContentPage>
     
     
