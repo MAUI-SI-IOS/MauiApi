@@ -1,40 +1,44 @@
-﻿using ApiQuiz.Logic.Data.ApiResponse;
-using ApiQuiz.Logic.Data.Bus;
-using ApiQuiz.Logic.Data.UI;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.Json.Serialization;
+﻿namespace ApiQuiz.Logic.Data.Bus;
 
-namespace ApiQuiz.Logic.Data.bus
+using ApiQuiz.Logic.Data.ApiResponse;
+
+using BusAnswer = Answer;
+using UIQuestion = UI.Question;
+using UIAnswer = UI.Answer;
+
+
+public class Question
 {
-    public class Question
+    string Value;
+    BusAnswer[] possibleAnswers;
+    public BusAnswer GoodAnswer { get; private set; }
+
+    internal Question(RawQuestion raw)      // Can only be built from RawQuestion
     {
-        string question;
-        Bus.Answer[] answers;
+        GoodAnswer = new BusAnswer(raw.GoodAnswer, true);
 
-        internal Question(RawQuestion raw)      // Can only be built from RawQuestion
-        {
-            Random random = new Random();
-            this.answers = raw.badAnswer.AsEnumerable()
-                                        .Select(i => new Bus.Answer(i, false))
-                                        .Append(new Bus.Answer(raw.goodAnswer, true))
-                                        .OrderBy(i => random.Next())
-                                        .ToArray();
+        Random random = new Random();
+        possibleAnswers = raw.BadAnswers
+            .AsEnumerable()
+            .Select(ans => new BusAnswer(ans, false))
+            .Append(GoodAnswer)
+            .OrderBy(_ => random.Next())
+            .ToArray();
 
-            this.question = raw.question;
-        }
+        Value = raw.Question;
+    }
 
-        public IEnumerable<Bus.Answer> GetGoodAnswers() => answers.Where(a => a.isTrue == true);
-        public UI.Question GetUIQuestion() {
-            return new UI.Question(question, answers.Select((answer, i) => new UI.Answer(i, answer.str)).ToArray());
-         }
-        public bool IsGoodAnswer(int x) => answers[x].isTrue;
+    public UIQuestion GetUIQuestion() {
+        return new UIQuestion(
+            Value, 
+            possibleAnswers
+                .Select((answer, i) => 
+                    new UIAnswer(
+                        i,
+                        answer.Value
+                    )
+                ).ToArray());
+    }
+    public bool IsGoodAnswer(int x) => possibleAnswers[x].IsRightAnswer;
 
-        public Question GetData()
-        {
-            return this;
-        }
-    } 
-}
+} 

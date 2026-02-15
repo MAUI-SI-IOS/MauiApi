@@ -1,36 +1,20 @@
-﻿using ApiQuiz.Logic.Data.bus;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace ApiQuiz.Logic.Data.ApiResponse;
+
 using System.Text.Json.Serialization;
+using BusQuestion = Bus.Question;
 
-namespace ApiQuiz.Logic.Data.ApiResponse
+
+public class RawQuestion
 {
-    public class RawQuestion
-    {
-        [JsonPropertyName("question")]
-        public string question { get; set; }
-        [JsonPropertyName("correct_answer")]
-        public string goodAnswer { get; set; }
-        [JsonPropertyName("incorrect_answers")]
-        public List<string> badAnswer { get; set; }
+    [JsonPropertyName("question")]
+    public string Question { get; set; }
+    [JsonPropertyName("correct_answer")]
+    public string GoodAnswer { get; set; }
+    [JsonPropertyName("incorrect_answers")]
+    public List<string> BadAnswers { get; set; }
 
 
-        public override string ToString()
-        {
-            string output = $"{question},\nGood answer: {goodAnswer}\nBad answer:\n";
+    public override string ToString() => $"{Question},\nGood answer: {GoodAnswer}\nBad answer:\n{string.Join('\n', BadAnswers)}\n\n";
 
-            foreach (var b in badAnswer)
-            {
-                output += b.ToString() + "\n";
-            }
-            output += "\n\n";
-            return output;
-        }
-
-        public Question intoQuestion()
-        {
-            return new Question(this);
-        }
-    }
+    public BusQuestion IntoQuestion() =>  new(this);
 }

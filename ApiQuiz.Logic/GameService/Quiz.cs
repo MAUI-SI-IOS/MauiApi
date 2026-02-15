@@ -1,53 +1,29 @@
-﻿using ApiQuiz.Logic.ApiService;
-using ApiQuiz.Logic.TimingService;
-using System.Collections;
+﻿using System.Collections;
 using ApiQuiz.GameService;
-using ApiQuiz.Logic.Data.bus;
-using ApiQuiz.Logic.Data.UI;
+using BusQuestion = ApiQuiz.Logic.Data.Bus.Question;
+using UIQuestion = ApiQuiz.Logic.Data.UI.Question;
 
 namespace ApiQuiz.Logic.GameService
 {
-    public class Quiz : IGame
+    public class Quiz(BusQuestion[] questions) : IGame
     {
-        Data.bus.Question[] questions;
-        Data.bus.Question?   currentQuestion;
-        int score;
+        BusQuestion?   currentQuestion = null;
+        public UIQuestion? CurrentUiQuestion => currentQuestion?.GetUIQuestion();
+        public int Score { get; private set; } = 0;
 
-        public Quiz(Data.bus.Question[] questions)
+        public void CheckAnswer(int x) 
         {
-            this.questions = questions;
-            currentQuestion = null;
-            score  = 0;
+            if(currentQuestion?.IsGoodAnswer(x) == true) 
+                Score += 1;
         }
 
-        /// <summary>
-        /// increment score, Timespan(not implemented yet)
-        /// </summary>
-        /// <param name="x"></param>
-        public void CheckAnswer(int x){
-            if(currentQuestion?.IsGoodAnswer(x) == true) {
-                //stop timer 
-                score += 1;
-            }
-        }
-
-        public IEnumerator<Data.UI.Question> GetEnumerator()
+        public IEnumerator<UIQuestion> GetEnumerator()
         {
-            foreach(var q in this.questions)
+            foreach (BusQuestion q in questions)
             {
-                //start timer
-
-                //change currentquestion
                 currentQuestion = q;
-
-                //return formated answer
                 yield return q.GetUIQuestion();
             }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
 }

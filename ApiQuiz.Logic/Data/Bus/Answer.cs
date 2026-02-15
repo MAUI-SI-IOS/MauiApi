@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ApiQuiz.Logic.Data.Bus
-{
-    public record Answer(string Str, bool IsTrue);
-
-}
+﻿namespace ApiQuiz.Logic.Data.Bus;
+public record Answer(
+    string Value, 
+    bool IsRightAnswer
+);

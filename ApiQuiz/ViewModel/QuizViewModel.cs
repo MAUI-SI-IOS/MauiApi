@@ -40,8 +40,8 @@ namespace ApiQuiz.ViewModel
             {
                 var current = _iterator.Current;
 
-                CurrentQuestion = current.Str;
-                Answers         = current.Array;
+                CurrentQuestion = current.Value;
+                Answers         = current.PossibleAnswers;
             }
             else
             {
