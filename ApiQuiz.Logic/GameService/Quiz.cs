@@ -1,62 +1,39 @@
-﻿using ApiQuiz.Logic.ApiService;
-using ApiQuiz.Logic.TimingService;
+﻿namespace ApiQuiz.Logic.GameService;
+
 using System.Collections;
-using ApiQuiz.GameService;
-using ApiQuiz.Logic.Data.bus;
-using ApiQuiz.Logic.Data.UI;
+using System.ComponentModel.DataAnnotations;
+using BusQuestion = Data.Bus.Question;
+using UIQuestion = Data.UI.Question;
 
-namespace ApiQuiz.Logic.GameService
+
+public class Quiz(BusQuestion[] questions) : IGame
 {
-    public class Quiz : IGame
+    BusQuestion?   currentQuestion = null;
+    public int Score { get; private set; } = 0;
+    int IGame.Score => Score;
+    int IGame.Length => questions.Length;
+
+    public void CheckAnswer(int x) 
     {
-        Data.bus.Question[] questions;
-        Data.bus.Question?  currentQuestion;
-        int score;
+        if(currentQuestion?.IsGoodAnswer(x) == true) 
+            Score += 1;
+    }
+    public bool IsGoodAnswer(int x) => currentQuestion?.IsGoodAnswer(x) ?? true;
 
-        public Quiz(Data.bus.Question[] questions)
+
+    public IEnumerator<UIQuestion> GetEnumerator()
+    {
+        foreach (BusQuestion q in questions)
         {
-            this.questions = questions;
-            currentQuestion = null;
-            score  = 0;
-        }
+            currentQuestion = q;
+            yield return q.GetUIQuestion();
 
-        public void CheckAnswer(int x){
-            if(currentQuestion?.IsGoodAnswer(x) == true) {
-                //stop timer 
-                score += 1;
-            }
-        }
-        public bool IsGoodAnswer(int x)
-        {
-            return currentQuestion?.IsGoodAnswer(x) ?? true;
-        }
-
-        public int GetScore()
-        {
-            return score;
-        }
-        public int GetLenght()
-        {
-            return questions.Length;
-        }
-
-        public IEnumerator<Data.UI.Question> GetEnumerator()
-        {
-            foreach(var q in this.questions)
-            {
-                //start timer
-
-                //change currentquestion
-                currentQuestion = q;
-
-                //return formated answer
-                yield return q.GetUIQuestion();
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+
 }

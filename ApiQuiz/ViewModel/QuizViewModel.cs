@@ -1,18 +1,21 @@
-﻿using ApiQuiz.Logic.Data.UI;
-using ApiQuiz.GameService;
-using ApiQuiz.Logic.GameService;
+﻿namespace ApiQuiz.ViewModel;
+
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Logic.Data.UI;
+using Logic.GameService;
+using Microsoft.Maui.Controls;
 
-namespace ApiQuiz.ViewModel
-{
-    public partial class QuizViewModel(
-        IGameCreator creator
-    ) : ObservableObject {
+
+
+public partial class QuizViewModel(
+    IGameCreator creator
+) : ObservableObject
+    {
         //------------- logic of quiz -------------//
         IGame _game;
         IEnumerator<Question> _iterator;
-        int numberQuestion;
+
 
         //-------------   variables   -------------//
         [ObservableProperty]
@@ -22,56 +25,64 @@ namespace ApiQuiz.ViewModel
         [ObservableProperty]
         string score;           // score afficher
         [ObservableProperty]
-        string gameSize;        // length of quiz
+        string gameLenght;      // length of quiz
         [ObservableProperty]
-        double ratio;           // progressBar               
+        double ratio;           // progressBar
         [ObservableProperty]
-        Color bColor;
+        int numberQuestion;     //question the person is at
+        [ObservableProperty]
+        Color bColor;          //background color
 
         public async Task LoadQuizAsync()
-        {   
-            _game     = await creator.CreateGame();
+        {
+            _game = await creator.CreateGame();
             _iterator = _game.GetEnumerator();
-            Score     = "0";
+
+            Score = "0";
             numberQuestion = 0;
-            GameSize  = _game.GetLenght().ToString();
+            GameLenght = _game.Length.ToString();
             GetNextQuestion();
         }
-        public void GetNextQuestion()
+
+
+        
+    public void GetNextQuestion()     
+    {
+        BColor = Colors.AliceBlue; // default color
+            
+        if (_iterator.MoveNext())    
         {
-            BColor = Colors.AliceBlue;
-            if (_iterator.MoveNext())
-            {
-                var current = _iterator.Current;
-                CurrentQuestion = current.Str;
-                Answers = current.Array;
-            }
-            else _ = GoToResultAsync();
+            var current = _iterator.Current;
+
+            CurrentQuestion = current.Value;
+            Answers = current.PossibleAnswers;
         }
+        else _ = GoToResultAsync();
+    }
 
         [RelayCommand]
         public async Task Answer(int position)
         {
             _game.CheckAnswer(position);
-            
             // update page variable
-            Score = _game.GetScore().ToString();
-            Ratio =  (double)++numberQuestion/ _game.GetLenght();
+            Score = _game.Score.ToString();
+            Ratio = (double)++numberQuestion / _game.Length;
 
             // update ui
             BColor = _game.IsGoodAnswer(position) ? Colors.Green : Colors.Red;
             await Task.Delay(1000);
-
             GetNextQuestion();
         }
 
-
-        private static async Task GoToResultAsync()
+        private async Task GoToResultAsync()
         {
             // TODO: pass the result to the result page
-            await Shell.Current.GoToAsync(nameof(ResultPage));
+            var query = new Dictionary<string, object>
+            {
+                ["score"] = _game.Score,
+            };
+
+            await Shell.Current.GoToAsync(nameof(ResultPage), query);
         }
 
-
-    }
 }

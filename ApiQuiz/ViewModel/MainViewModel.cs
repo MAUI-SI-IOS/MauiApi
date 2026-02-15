@@ -1,10 +1,6 @@
 ﻿using ApiQuiz.Logic.ApiService;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 
 namespace ApiQuiz.ViewModel
 {

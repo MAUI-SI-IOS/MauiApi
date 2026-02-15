@@ -5,7 +5,8 @@
              Title="ResultPage">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            x:Name="ScoreLabel"
+            Text="Score: 0"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>
