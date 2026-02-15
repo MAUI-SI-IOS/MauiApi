@@ -1,16 +1,15 @@
+﻿using ApiQuiz.Logic.Data.UI;
 using ApiQuiz.GameService;
-using ApiQuiz.Logic.Data.UI;
 using ApiQuiz.Logic.GameService;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Diagnostics;
 
 namespace ApiQuiz.ViewModel
 {
-    public partial class QuizViewModel : ObservableObject
-    {
+    public partial class QuizViewModel(
+        IGameCreator creator
+    ) : ObservableObject {
         //------------- logic of quiz -------------//
-        IGameCreator _creator;
         IGame _game;
         IEnumerator<Question> _iterator;
 
@@ -21,19 +20,14 @@ namespace ApiQuiz.ViewModel
         [ObservableProperty]
         Answer[] answers;
 
-        public QuizViewModel(IGameCreator creator)
-        {
-            _creator = creator;
-        }
         public async Task LoadQuizAsync()
         {   
-            _game = await _creator.CreateGame();
+            _game = await creator.CreateGame();
             _iterator = _game.GetEnumerator();
             GetNextQuestion();
         }
 
 
-        [RelayCommand]
         public void GetNextQuestion()
         {
             if(_iterator.MoveNext())
@@ -43,16 +37,22 @@ namespace ApiQuiz.ViewModel
                 CurrentQuestion = current.Str;
                 Answers         = current.Array;
             }
-            else
-            {
-                //end game
-            }
+            else _ = GoToResultAsync();
         }
 
         [RelayCommand]
-        public void Answer(int x)
+        public void Answer(int position)
         {
-            _game.CheckAnswer(x);
+            _game.CheckAnswer(position);
+            GetNextQuestion();
         }
+
+        private static async Task GoToResultAsync()
+        {
+            // TODO: pass the result to the result page
+            await Shell.Current.GoToAsync(nameof(ResultPage));
+        }
+
+
     }
 }
