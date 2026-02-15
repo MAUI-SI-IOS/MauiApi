@@ -49,6 +49,7 @@
                 
                 <ProgressBar Progress="{Binding Ratio}" 
                  ProgressColor="DeepPink"
+                 BackgroundColor="Gray"
                  ScaleY="2" />
                 
             </StackLayout>

@@ -12,7 +12,7 @@ namespace ApiQuiz.ViewModel
         //------------- logic of quiz -------------//
         IGame _game;
         IEnumerator<Question> _iterator;
-
+        int numberQuestion;
 
         //-------------   variables   -------------//
         [ObservableProperty]
@@ -20,14 +20,18 @@ namespace ApiQuiz.ViewModel
         [ObservableProperty]
         Answer[] answers;
         [ObservableProperty]
-        string score;
+        string score;           // score afficher
         [ObservableProperty]
-        string gameSize;
+        string gameSize;        // length of quiz
+        [ObservableProperty]
+        double ratio;              // progressBar               
+
         public async Task LoadQuizAsync()
         {   
             _game     = await creator.CreateGame();
             _iterator = _game.GetEnumerator();
-            Score     = 0;
+            Score     = "0";
+            numberQuestion = 0;
             GameSize  = _game.GetLenght().ToString();
             GetNextQuestion();
         }
@@ -38,7 +42,6 @@ namespace ApiQuiz.ViewModel
             if(_iterator.MoveNext())
             {
                 var current = _iterator.Current;
-
                 CurrentQuestion = current.Str;
                 Answers         = current.Array;
             }
@@ -50,7 +53,8 @@ namespace ApiQuiz.ViewModel
         {
             _game.CheckAnswer(position);
             Score = _game.GetScore().ToString();
-           
+
+            Ratio =  (double)++numberQuestion/ _game.GetLenght();
             GetNextQuestion();
         }
 
