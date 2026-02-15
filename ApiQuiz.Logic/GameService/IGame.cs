@@ -1,12 +1,14 @@
 using ApiQuiz.Logic.Data.UI;
+using System.Collections;
 
+// Aliases
+using UIQuestion = ApiQuiz.Logic.Data.UI.Question;
 
-using ApiQuiz.Logic.Data.UI;
+namespace ApiQuiz.Logic.GameService;
 
-namespace ApiQuiz.GameService;
-
-public interface IGame : IEnumerable<Question>
+public interface IGame
 {
-    public void CheckAnswer(int x);
-
+    void CheckAnswer(int x);
+    IEnumerator<UIQuestion> GetEnumerator();
+    int Score { get; }
 }

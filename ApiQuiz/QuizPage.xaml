@@ -61,7 +61,7 @@
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <!-- TODO: Les button n'ont pas d'event pour quand le bouton est appuyer  -->
-                    <Button Text = "{Binding Str}"
+                    <Button Text = "{Binding Value}"
                             Margin = "0,5" 
                             TextColor="white"
                             BackgroundColor="Blue"

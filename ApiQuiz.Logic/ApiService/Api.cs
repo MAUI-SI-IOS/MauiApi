@@ -32,12 +32,12 @@ namespace ApiQuiz.Logic.ApiService
             try
             {
                 var response = await _client.GetFromJsonAsync<QuestionResponse>(url, _serializerOptions);
-                if (response?.results == null)
+                if (response?.Results == null)
                 {
                     throw new Exception("No questions were found in the API response.");
                 }
 
-                return response.results;
+                return response.Results;
             }
             catch
             {

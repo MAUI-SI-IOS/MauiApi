@@ -4,11 +4,13 @@ using System.Text;
 
 namespace ApiQuiz.Logic.Data.UI
 {
-    public partial record Answer(int Index, string Str)
-    {
+    public record Answer(
+        int Index,
+        string Value
+    ) {
         public override string ToString()
         {
-            return $"{Index}, {Str}";
+            return $"{Index}, {Value}";
         }
     };
 }
