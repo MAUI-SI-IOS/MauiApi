@@ -19,6 +19,8 @@ namespace ApiQuiz.ViewModel
         string currentQuestion;
         [ObservableProperty]
         Answer[] answers;
+        [ObservableProperty]
+        string score;
 
         public async Task LoadQuizAsync()
         {   
@@ -44,6 +46,7 @@ namespace ApiQuiz.ViewModel
         public void Answer(int position)
         {
             _game.CheckAnswer(position);
+            Score = _game.GetScore().ToString();
             GetNextQuestion();
         }
 

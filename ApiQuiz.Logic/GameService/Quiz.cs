@@ -30,6 +30,10 @@ namespace ApiQuiz.Logic.GameService
                 score += 1;
             }
         }
+        public int GetScore()
+        {
+            return score;
+        }
 
         public IEnumerator<Data.UI.Question> GetEnumerator()
         {
