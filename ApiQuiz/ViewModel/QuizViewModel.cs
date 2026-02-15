@@ -48,6 +48,7 @@ namespace ApiQuiz.ViewModel
             }
             else _ = GoToResultAsync();
         }
+
         [RelayCommand]
         public async Task Answer(int position)
         {

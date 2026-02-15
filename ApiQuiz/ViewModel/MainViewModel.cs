@@ -32,10 +32,23 @@ namespace ApiQuiz.ViewModel
         [ObservableProperty]
         short amount;
 
+        public void OnAmountChanged(short value)
+        {
+            if(value < 20)
+            {
+                Amount = 20;
+            }
+        }
+
+
+
         [ObservableProperty]
         string errCategoryMessage;
         [ObservableProperty]
         string errTextMessage;
+
+
+
 
         partial void OnSelectedCategoryChanged(string value) => SanitizeCategory();
         partial void OnAmountChanged(short value) => SanitizeAmount();
