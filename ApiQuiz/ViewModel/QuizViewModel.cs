@@ -25,8 +25,10 @@ namespace ApiQuiz.ViewModel
         string gameSize;
         public async Task LoadQuizAsync()
         {   
-            _game = await creator.CreateGame();
+            _game     = await creator.CreateGame();
             _iterator = _game.GetEnumerator();
+            Score     = 0;
+            GameSize  = _game.GetLenght().ToString();
             GetNextQuestion();
         }
 
@@ -48,7 +50,7 @@ namespace ApiQuiz.ViewModel
         {
             _game.CheckAnswer(position);
             Score = _game.GetScore().ToString();
-            GameSize = _game.GetLenght().ToString();
+           
             GetNextQuestion();
         }
 
