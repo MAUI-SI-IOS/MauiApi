@@ -6,9 +6,10 @@ using UIQuestion = ApiQuiz.Logic.Data.UI.Question;
 
 namespace ApiQuiz.Logic.GameService;
 
-public interface IGame
+public interface IGame: IEnumerable<UIQuestion>
 {
-    void CheckAnswer(int x);
-    IEnumerator<UIQuestion> GetEnumerator();
+    public void CheckAnswer(int x);
+    public bool IsGoodAnswer(int x);
     int Score { get; }
+    int Length { get; }
 }

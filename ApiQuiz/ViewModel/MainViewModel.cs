@@ -20,7 +20,7 @@ namespace ApiQuiz.ViewModel
 
             //set value by default
             SelectedCategory = Category.GeneralKnowledge.ToString();
-            amount = 10;
+            amount = 20;
         }
 
         [ObservableProperty]
@@ -28,10 +28,16 @@ namespace ApiQuiz.ViewModel
         [ObservableProperty]
         short amount;
 
+
+
+
         [ObservableProperty]
         string errCategoryMessage;
         [ObservableProperty]
         string errTextMessage;
+
+
+
 
         partial void OnSelectedCategoryChanged(string value) => SanitizeCategory();
         partial void OnAmountChanged(short value) => SanitizeAmount();

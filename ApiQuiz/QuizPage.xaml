@@ -4,7 +4,7 @@
              x:Class="ApiQuiz.QuizPage"
              x:Name="QuizPageRoot">
 
-    <StackLayout Background="AliceBlue" Padding="10">
+    <StackLayout Background="{Binding BColor}" Padding="10">
         
         <Border
             Stroke="black"
@@ -27,7 +27,7 @@
                         FontAttributes="Bold"
                         TextColor="Black"/>
                     <Label 
-                        Text="{Binding QuestionSize}"
+                        Text="{Binding GameLenght}"
                         FontSize="Default"
                         FontAttributes="Bold"
                         TextColor="Black"/>
@@ -49,6 +49,7 @@
                 
                 <ProgressBar Progress="{Binding Ratio}" 
                  ProgressColor="DeepPink"
+                 BackgroundColor="Gray"
                  ScaleY="2" />
                 
             </StackLayout>

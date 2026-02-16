@@ -16,7 +16,7 @@ namespace ApiQuiz.Logic.ApiService
         {
             //default param
             this.category = Category.GeneralKnowledge;
-            this.amount = 10;
+            this.amount = 20;
         }
 
         public string TrySetCategory(string category)
@@ -32,8 +32,14 @@ namespace ApiQuiz.Logic.ApiService
 
         public string TrySetAmount(short amount)
         {
-            if (amount > 30 || amount <= 0)
+            if(amount < 20)
             {
+                this.amount = 20;
+                return "Minimum questions is 20";
+            }
+            if (amount > 30)
+            {
+                this.amount = 30;
                 return "Max questions is 30";
             }
 
