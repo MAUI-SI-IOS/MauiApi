@@ -15,6 +15,7 @@ public partial class QuizPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+        //Load at runtime les questions fetch par l'api
         if (BindingContext is QuizViewModel vm)
         {
             await vm.LoadQuizAsync();

@@ -35,13 +35,22 @@ public partial class QuizViewModel(
 
         public async Task LoadQuizAsync()
         {
-            _game = await creator.CreateGame();
-            _iterator = _game.GetEnumerator();
+            try
+            {
+                _game = await creator.CreateGame();
+                _iterator = _game.GetEnumerator();
 
-            Score = "0";
-            numberQuestion = 0;
-            GameLenght = _game.Length.ToString();
-            GetNextQuestion();
+                Score = "0";
+                numberQuestion = 0;
+                GameLenght = _game.Length.ToString();
+                GetNextQuestion();
+            }
+            catch
+            {
+                //Pour Hnadle les Too many request
+                await Shell.Current.DisplayAlertAsync("Error", "internal error try again in a moment", "OK");
+                await Shell.Current.GoToAsync("..");
+            }
         }
 
 

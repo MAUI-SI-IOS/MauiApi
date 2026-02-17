@@ -10,8 +10,6 @@ namespace ApiQuiz
             InitializeComponent();
             BindingContext = vm;        
         }
-
-
         public void StartQuiz(object? sender, EventArgs args)
         {
             _ = Shell.Current.GoToAsync(nameof(QuizPage));

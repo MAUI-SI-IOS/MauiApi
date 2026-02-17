@@ -27,24 +27,19 @@ namespace ApiQuiz.ViewModel
         string selectedCategory;
         [ObservableProperty]
         short amount;
-
-
-
-
         [ObservableProperty]
         string errCategoryMessage;
         [ObservableProperty]
         string errTextMessage;
 
 
-
-
+        //des event et leur implementation
         partial void OnSelectedCategoryChanged(string value) => SanitizeCategory();
         partial void OnAmountChanged(short value) => SanitizeAmount();
 
         [RelayCommand]
         void SanitizeAmount() {
-            UrlBuilder builder = new UrlBuilder();
+            // enforce invariance of app if < 20 then 20 if >30 then 30
             ErrTextMessage = this.builder.TrySetAmount(amount);
         }
 
