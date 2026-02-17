@@ -15,7 +15,7 @@ namespace ApiQuiz.Logic.TimingService
         {
             timer.Start();
         }
-        public void Update()
+        public void Stop()
         {
             times[_ptr] = timer.Elapsed;
             _ptr++;
