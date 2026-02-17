@@ -27,8 +27,8 @@ namespace ApiQuiz
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainViewModel>();
 
-            builder.Services.AddScoped<UrlBuilder>();
-            builder.Services.AddSingleton<Api>();
+            builder.Services.AddSingleton<UrlBuilder>();
+            builder.Services.AddTransient<Api>();
             // Nous reinitialisons l'objet afin d'avoir un nouveau quiz
             // tous les fois que ces objets sont demandes
             builder.Services.AddTransient<IGameCreator, QuizGameCreator>();
