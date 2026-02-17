@@ -3,12 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ApiQuiz.ResultPage"
              Title="ResultPage">
-    <VerticalStackLayout>
-        <Label 
-            x:Name="ScoreLabel"
-            Text="Score: 0"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <VerticalStackLayout  Background="AliceBlue" Spacing="20">
+        <Border
+            Stroke="Black"
+            StrokeThickness="0.5"
+            StrokeShape="RoundRectangle 10"
+            BackgroundColor="white"
+            Padding="10">
+            <StackLayout>
+                <Label 
+                    x:Name="ScoreLabel"
+                    Text="Score: 0"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    TextColor="Black"/>
+            </StackLayout>
+        </Border>
+        
         <Button 
                 Text="Restart" 
                 FontSize="Subtitle" 
