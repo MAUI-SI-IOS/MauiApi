@@ -5,10 +5,10 @@ using System.Text;
 
 namespace ApiQuiz.Logic.TimingService
 {
-    internal class TimerService: ISubject
+    public class TimerService(int nbQuestions) 
     {
         Stopwatch  timer = new();
-        TimeSpan[] times = [];
+        private TimeSpan[] times = new TimeSpan[nbQuestions];
         int _ptr;
 
         public void Start()
