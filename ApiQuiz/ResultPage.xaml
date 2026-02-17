@@ -9,5 +9,12 @@
             Text="Score: 0"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button 
+                Text="Restart" 
+                FontSize="Subtitle" 
+                FontAttributes="Bold"
+                BackgroundColor="Blue" 
+                Clicked="Restart"
+                TextColor="White"/>
     </VerticalStackLayout>
 </ContentPage>

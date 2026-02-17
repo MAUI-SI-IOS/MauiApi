@@ -29,6 +29,7 @@ namespace ApiQuiz
 
 
             builder.Services.AddTransient<IGameCreator, QuizGameCreator>();
+
             builder.Services.AddTransient<QuizPage>();
             builder.Services.AddTransient<QuizViewModel>();
 
