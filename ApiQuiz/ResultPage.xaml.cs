@@ -1,10 +1,26 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Maui.Controls;
 namespace ApiQuiz;
 
 [QueryProperty(nameof(ScoreQuery), "score")]
+[QueryProperty(nameof(QuizLengthQuery), "quizLenght")]
 public partial class ResultPage : ContentPage, IQueryAttributable
 {
     // backing property used for query parsing
+    string QuizLengthQuery
+    {
+        set
+        {
+            if (int.TryParse(value, out var s))
+            {
+                QuizLength = s;
+            }
+            else
+            {
+                QuizLength = 0;
+            }
+        }
+    }
     string ScoreQuery
     {
         set
@@ -21,7 +37,7 @@ public partial class ResultPage : ContentPage, IQueryAttributable
     }
 
     public int Score { get; private set; }
-
+    public int QuizLength { get; private set; }
     public ResultPage()
     {
         InitializeComponent();
@@ -30,11 +46,17 @@ public partial class ResultPage : ContentPage, IQueryAttributable
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        ScoreLabel.Text = $"Score: {Score}";
-        }
+        ScoreLabel.Text = $"Score: {Score}/{QuizLength}";
+    }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
         Score = (int)query["score"];
+        QuizLength = (int)query["quizLenght"];
+    }
+    protected async void Restart(object? sender, EventArgs arg)
+    {
+        // le // est pour enlever les autres page du stack
+        await Shell.Current.GoToAsync("//MainPage");
     }
 }

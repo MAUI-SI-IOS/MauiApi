@@ -76,11 +76,13 @@ public partial class QuizViewModel(
 
         private async Task GoToResultAsync()
         {
-            // TODO: pass the result to the result page
-            var query = new Dictionary<string, object>
-            {
-                ["score"] = _game.Score,
-            };
+        // TODO: pass the result to the result page
+        var query = new Dictionary<string, object>
+        {
+            ["score"]      = _game.Score,
+            ["quizLenght"] = _game.Length,
+            //["timespan"]   = _game.timeData,
+        };
 
             await Shell.Current.GoToAsync(nameof(ResultPage), query);
         }
