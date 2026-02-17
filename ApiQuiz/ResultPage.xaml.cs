@@ -1,3 +1,4 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Maui.Controls;
 namespace ApiQuiz;
 
@@ -52,5 +53,10 @@ public partial class ResultPage : ContentPage, IQueryAttributable
     {
         Score = (int)query["score"];
         QuizLength = (int)query["quizLenght"];
+    }
+    protected async void Restart(object? sender, EventArgs arg)
+    {
+        // le // est pour enlever les autres page du stack
+        await Shell.Current.GoToAsync("//MainPage");
     }
 }
