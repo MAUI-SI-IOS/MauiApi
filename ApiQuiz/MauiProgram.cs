@@ -21,18 +21,19 @@ namespace ApiQuiz
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-            //pour tuto ou jai vu ceci
-            //https://www.youtube.com/watch?v=ddmZ6k1GIkM&list=PLdo4fOcmZ0oUBAdL2NwBpDs32zwGqb9DY&index=6&t=348s
-            builder.Services.AddSingleton<UrlBuilder>();
+
+            // ils sont enregistres comme des singletons,
+            // car ils sont souvent utiliser et ils ne sont pas reactif
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainViewModel>();
 
-
+            builder.Services.AddScoped<UrlBuilder>();
+            builder.Services.AddSingleton<Api>();
+            // Nous reinitialisons l'objet afin d'avoir un nouveau quiz
+            // tous les fois que ces objets sont demandes
             builder.Services.AddTransient<IGameCreator, QuizGameCreator>();
-
             builder.Services.AddTransient<QuizPage>();
             builder.Services.AddTransient<QuizViewModel>();
-
 
             return builder.Build();
         }

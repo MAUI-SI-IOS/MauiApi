@@ -39,9 +39,14 @@ namespace ApiQuiz.Logic.ApiService
 
                 return response.Results;
             }
+            //l'api permet de faire des requetes a toute les 5 secondes
+            catch (HttpRequestException ex)
+            {
+                throw new Exception("internal error pls try again later");
+            }
             catch
             {
-                throw new Exception("[bad response] couldn't process response");
+                throw new Exception($"[bad response] couldn't process response");
             }
         }
 
