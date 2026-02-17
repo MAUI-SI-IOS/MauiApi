@@ -39,7 +39,7 @@ namespace ApiQuiz.ViewModel
 
         [RelayCommand]
         void SanitizeAmount() {
-            //ass
+            // enforce invariance of app if < 20 then 20 if >30 then 30
             ErrTextMessage = this.builder.TrySetAmount(amount);
         }
 
