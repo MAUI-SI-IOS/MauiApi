@@ -1,6 +1,9 @@
 ﻿namespace ApiQuiz.Logic.Data.Bus;
 
 using ApiQuiz.Logic.Data.ApiResponse;
+using System;
+using System.Linq;
+using System.Net;
 
 using BusAnswer = Answer;
 using UIQuestion = UI.Question;
@@ -15,17 +18,21 @@ public class Question
 
     internal Question(RawQuestion raw)      // Can only be built from RawQuestion
     {
-        GoodAnswer = new BusAnswer(raw.GoodAnswer, true);
+        // HTML-decode API values so entities like &quot; or &#039; become real quotes/apostrophes
+        var decodedQuestion = WebUtility.HtmlDecode(raw.Question ?? string.Empty);
+        var decodedGoodAnswer = WebUtility.HtmlDecode(raw.GoodAnswer ?? string.Empty);
+
+        GoodAnswer = new BusAnswer(decodedGoodAnswer, true);
 
         Random random = new Random();
         possibleAnswers = raw.BadAnswers
             .AsEnumerable()
-            .Select(ans => new BusAnswer(ans, false))
+            .Select(ans => new BusAnswer(WebUtility.HtmlDecode(ans ?? string.Empty), false))
             .Append(GoodAnswer)
             .OrderBy(_ => random.Next())
             .ToArray();
 
-        Value = raw.Question;
+        Value = decodedQuestion;
     }
 
     public UIQuestion GetUIQuestion() {
@@ -41,4 +48,4 @@ public class Question
     }
     public bool IsGoodAnswer(int x) => possibleAnswers[x].IsRightAnswer;
 
-} 
+}
