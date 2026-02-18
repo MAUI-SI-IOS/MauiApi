@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ApiQuiz.ResultPage"
              Title="ResultPage">
-    <VerticalStackLayout  Background="AliceBlue" Spacing="20">
+    <VerticalStackLayout Background="AliceBlue" Spacing="20" Padding="12">
         <Border
             Stroke="Black"
             StrokeThickness="0.5"
             StrokeShape="RoundRectangle 10"
-            BackgroundColor="white"
+            BackgroundColor="White"
             Padding="10">
             <StackLayout>
                 <Label 
@@ -19,13 +19,46 @@
                     TextColor="Black"/>
             </StackLayout>
         </Border>
-        
+
+        <!-- Constrain the list area so header and totals remain visible -->
+        <Border
+            Stroke="Black"
+            StrokeThickness="0.5"
+            StrokeShape="RoundRectangle 10"
+            BackgroundColor="White"
+            Padding="10">
+            <!-- RowDefinitions: header auto, scrollable area takes remaining space, totals auto -->
+            <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*">
+                <Label Text="Per-question time"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"
+                       Grid.Row="0"
+                       TextColor="Black"
+                       Margin="0,0,0,6" />
+
+                <!-- ScrollView uses the star row and won't expand past available space -->
+                <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Default">
+                    <FlexLayout x:Name="TimesFlex"
+                                Wrap="Wrap"
+                                Direction="Row"
+                                JustifyContent="Start"
+                                AlignItems="Start"
+                                Padding="6"/>
+                </ScrollView>
+
+                <HorizontalStackLayout Spacing="12" HorizontalOptions="Center" Grid.Row="2">
+                    <Label x:Name="TotalTimeLabel" Text="Total: 00:00.000" TextColor="Black"/>
+                    <Label x:Name="AverageTimeLabel" Text="Average: 00:00.000" TextColor="Black"/>
+                </HorizontalStackLayout>
+            </Grid>
+        </Border>
+
         <Button 
-                Text="Restart" 
-                FontSize="Subtitle" 
-                FontAttributes="Bold"
-                BackgroundColor="Blue" 
-                Clicked="Restart"
-                TextColor="White"/>
+            Text="Restart" 
+            FontSize="Subtitle" 
+            FontAttributes="Bold"
+            BackgroundColor="Blue" 
+            Clicked="Restart"
+            TextColor="White"/>
     </VerticalStackLayout>
 </ContentPage>

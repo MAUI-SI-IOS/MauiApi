@@ -1,4 +1,6 @@
-﻿namespace ApiQuiz.ViewModel;
+﻿using ApiQuiz.Logic.TimingService;
+
+namespace ApiQuiz.ViewModel;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -15,6 +17,8 @@ public partial class QuizViewModel(
         //------------- logic of quiz -------------//
         IGame _game;
         IEnumerator<Question> _iterator;
+
+        private TimerService _gameTimer;
 
 
         //-------------   variables   -------------//
@@ -39,6 +43,8 @@ public partial class QuizViewModel(
             {
                 _game = await creator.CreateGame();
                 _iterator = _game.GetEnumerator();
+
+                _gameTimer = new TimerService(_game.Length);
 
                 Score = "0";
                 numberQuestion = 0;
@@ -65,6 +71,7 @@ public partial class QuizViewModel(
 
             CurrentQuestion = current.Value;
             Answers = current.PossibleAnswers;
+            _gameTimer.Start();
         }
         else _ = GoToResultAsync();
     }
@@ -72,6 +79,7 @@ public partial class QuizViewModel(
         [RelayCommand]
         public async Task Answer(int position)
         {
+            _gameTimer.Stop();
             _game.CheckAnswer(position);
             // update page variable
             Score = _game.Score.ToString();
@@ -89,8 +97,8 @@ public partial class QuizViewModel(
         var query = new Dictionary<string, object>
         {
             ["score"]      = _game.Score,
-            ["quizLenght"] = _game.Length,
-            //["timespan"]   = _game.timeData,
+            ["quizLength"] = _game.Length,
+            ["timespan"]   = _gameTimer.GetResult(),
         };
 
             await Shell.Current.GoToAsync(nameof(ResultPage), query);
